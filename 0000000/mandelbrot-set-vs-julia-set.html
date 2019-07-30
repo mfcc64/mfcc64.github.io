@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Mandelbrot Set vs Julia Set</title>
+        <link rel="stylesheet" href="/css/default.css"/>
+        <script src="/js/bootstrap.js"></script>
+    </head>
+    <body>
+        <div id="content">
+            <h1 class="align-center">Mandelbrot Set vs Julia Set</h1>
+            <p>Probably, Mandelbrot set is the most popular fractal. So many videos of Mandelbrot set
+            zoom are availabe. Julia set is not as popular as Mandelbrot set. But actually,it has
+            close relationship with Mandelbrot set. Recently, I rendered Mandelbrot set zoom
+            (at \( c_m \)) alongside Julia set zoom with varying control point (\(c_j\)). To make
+            Mandelbrot set and Julia set equal in level of detail, the Julia set speed should be
+            half of Mandelbrot set speed (represented as Mandelbrot width (\(w_m\)) and Julia width
+            (\(w_j\))). Here are the videos (and parameters). I hope you enjoy it.</p>
+
+            <h2 class="align-center">Dance of Infinity - Mandelbrot Set Zoom vs Julia Set</h2>
+            <p class="align-center">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/Qp4ZG747lWY" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </p>
+            <p>\[\begin{align}
+                x_m &amp;= -1.2522374288795870649236097248840843509256017527419668 \\
+                y_m &amp;= +0.3451566295671664004327107145217337363647407791740870 \\
+                c_m &amp;= x_m + i y_m \\
+                w_m &amp;= 2^{-0.234375 t + 3} \\
+                c_j &amp;= c_m + 0.25 w_m \sin(0.46875\pi t) e^{0.234375 \pi i t} \\
+                w_j &amp;= \sqrt{8.25 w_m}
+            \end{align}\]</p>
+
+            <h2 class="align-center">Rope of Hope - Mandelbrot Set Zoom vs Julia Set</h2>
+            <p class="align-center">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/dekA3GNm6Qk" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </p>
+            <p>\[\begin{align}
+                c_m &amp;= -1.7485403467486282833966642439055485053381926480658673 \\
+                w_m &amp;= 2^{-0.1171875(t-26.5) + 3} \\
+                c_j &amp;= c_m + 0.25 w_m e^{0.234375 \pi i (t - 26.5)} \\
+                w_j &amp;= \sqrt{8.25 w_m}
+            \end{align}\]</p>
+
+            <h2 class="align-center">The Four Craftsmen - Mandelbrot Set Zoom vs Julia Sets</h2>
+            <p class="align-center">
+                <iframe width="640" height="360" src="https://www.youtube.com/embed/b0hHgmb50ss" frameborder="0"
+                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"></iframe>
+            </p>
+            <p>\[\begin{align}
+                c_m &amp;= -1.7485403467486282833966642439055485053381926480658673 \\
+                w_m &amp;= 2^{-0.1171875(t-26.5) + 3} \\
+                c_j &amp;= c_m + 0.25 w_m e^{(0.234375 (t - 26.5) + 0.5 n + 0.25) \pi i} \hspace{0.5cm} \text{for }n = 0, 1, 2, 3\\
+                w_j &amp;= \sqrt{8.25 w_m}
+            \end{align}\]</p>
+        </div>
+    </body>
+</html>
