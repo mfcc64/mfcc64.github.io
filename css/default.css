@@ -73,7 +73,7 @@ p {
     padding: 0;
     border: 0;
     line-height: 0;
-    background-color: rgba(0, 0, 0, .25);
+    background-color: rgba(0, 0, 0, .8);
 }
 
 #footer-link img {
