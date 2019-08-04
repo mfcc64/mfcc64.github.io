@@ -24,4 +24,6 @@ window.addEventListener("load", function(event){
     include_js("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full", true);
     include_js("/js/post.js", false);
     include_js("/js/layout.js", false);
+    if (document.getElementById("content-list"))
+        include_js("/js/content-list.js");
 });
