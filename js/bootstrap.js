@@ -22,8 +22,21 @@ window.addEventListener("load", function(event){
     include_icon("/img/icon/icon-48.png", 48);
     include_icon("/img/icon/icon-64.png", 64);
     include_js("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full", true);
+
+    // analytics
+    var aid = "UA-146336275-1";
+    include_js("https://www.googletagmanager.com/gtag/js?id=" + aid, true);
+    gtag('js', new Date());
+    gtag('config', aid);
+
     include_js("/js/post.js", false);
     include_js("/js/layout.js", false);
     if (document.getElementById("content-list"))
         include_js("/js/content-list.js");
 });
+
+// analytics
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
