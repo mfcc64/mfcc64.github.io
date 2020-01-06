@@ -15,6 +15,12 @@ function include_icon(url, size) {
     document.head.appendChild(icon);
 }
 
+// analytics
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+    dataLayer.push(arguments);
+}
+
 (function(){
     include_icon("/img/icon/icon-16.png", 16);
     include_icon("/img/icon/icon-24.png", 24);
@@ -37,9 +43,3 @@ function include_icon(url, size) {
     include_js("/js/post.js", false);
     include_js("/js/layout.js", true);
 })();
-
-// analytics
-window.dataLayer = window.dataLayer || [];
-function gtag() {
-    dataLayer.push(arguments);
-}
