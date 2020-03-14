@@ -3,7 +3,7 @@
     "file": "mandelbrot-set-vs-julia-set.html",
     "preview": [
         "<p>Probably, Mandelbrot set is the most popular fractal. So many videos of Mandelbrot set",
-        "zoom are availabe. Julia set is not as popular as Mandelbrot set. But actually, it has",
+        "zoom are available. Julia set is not as popular as Mandelbrot set. But actually, it has",
         "close relationship with Mandelbrot set. Recently, I rendered Mandelbrot set zoom",
         "(at \\( c_m \\)) alongside Julia set zoom with varying control point (\\(c_j\\)).</p>"
     ]
