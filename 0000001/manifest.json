@@ -1,0 +1,7 @@
+{
+    "title": "AudioWorklet Test",
+    "file": "audio-worklet-test.html",
+    "preview": [
+        "<p>Test AudioWorklet performance.</p>"
+    ]
+}
