@@ -10,8 +10,9 @@ html, body {
     color: #ffffff;
 }
 
-body {
+#content, #content-list {
     padding: 70pt;
+    position: absolute;
 }
 
 @media print {
