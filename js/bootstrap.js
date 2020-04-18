@@ -1,18 +1,17 @@
 
+function append_element(parent, name, func) {
+    var e = document.createElement(name);
+    func(e);
+    parent.appendChild(e);
+}
+
 function include_js(url, is_async) {
-    var js = document.createElement("script");
-    js.async = is_async;
-    js.src = url;
-    document.head.appendChild(js);
+    append_element(document.head, "script", (e) => (e.async = is_async, e.src = url));
 }
 
 function include_icon(url, size) {
-    var icon = document.createElement("link");
-    icon.rel = "icon";
-    icon.type = "image/png";
-    icon.href = url;
-    icon.sizes = size + "x" + size;
-    document.head.appendChild(icon);
+    append_element(document.head, "link", (e) => (e.rel = "icon", e.type = "image/png",
+                   e.href = url, e.sizes = size + "x" + size));
 }
 
 // analytics
@@ -22,6 +21,7 @@ function gtag() {
 }
 
 (function(){
+    append_element(document.head, "meta", (e) => (e.name = "viewport", e.content = "width=device-width, initial-scale=1"));
     include_icon("/img/icon/icon-16.png", 16);
     include_icon("/img/icon/icon-24.png", 24);
     include_icon("/img/icon/icon-32.png", 32);
