@@ -29,9 +29,9 @@ function gtag() {
     include_icon("/img/icon/icon-64.png", 64);
 
     if (window.location && location.hostname == "localhost") {
-        include_js("/MathJax/MathJax.js?config=TeX-AMS_HTML-full", true);
+        include_js("/MathJax/MathJax.js?config=TeX-AMS_CHTML-full", true);
     } else {
-        include_js("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML-full", true);
+        include_js("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full", true);
 
         // analytics
         var aid = "UA-146336275-1";
