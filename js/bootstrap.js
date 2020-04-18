@@ -21,7 +21,6 @@ function gtag() {
 }
 
 (function(){
-    append_element(document.head, "meta", (e) => (e.name = "viewport", e.content = "width=device-width, initial-scale=1"));
     include_icon("/img/icon/icon-16.png", 16);
     include_icon("/img/icon/icon-24.png", 24);
     include_icon("/img/icon/icon-32.png", 32);
