@@ -40,5 +40,6 @@ function gtag() {
     }
 
     include_js("/js/post.js", false);
-    include_js("/js/layout.js", true);
+    include_js("/js/load-manifest.js", false);
+    include_js("/js/layout.js", false);
 })();

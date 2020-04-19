@@ -1,12 +1,5 @@
 
 (function(){
-    function get_base_url(num) {
-        var num_txt = "" + num;
-        while (num_txt.length < 7)
-            num_txt = "0" + num_txt;
-        return num_txt;
-    }
-
     var idx = 0;
     var idx_table = [];
 
@@ -47,31 +40,17 @@
         var container = document.createElement("div");
         container.id = "content-list-" + base_url;
         document.getElementById("content-list").appendChild(container);
-        var xhr = new XMLHttpRequest();
-        xhr.open("GET", "/" + base_url + "/manifest.json", true);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4 && xhr.status === 200 && xhr.responseText) {
-                var json = null;
-                try {
-                    json = JSON.parse(xhr.responseText);
-                } catch (err) {
-                    console.error(err);
-                }
-                if (json && json.title && json.file && json.preview) {
-                    var inner = "<h2>" + json.title + "</h2>" + json.preview.join(" ") +
-                                "<p><a href=\"/" + base_url + "/" + json.file + "\">Read more...</a>" +
-                                "&#160;<a target='_blank' rel='noopener' href=\"/" + base_url + "/" + json.file +
-                                "\">Read more in new tab...</a></p>";
-                    container.innerHTML = inner;
-                    if (window.MathJax && MathJax.Hub)
-                        MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
-                }
-            } else if (xhr.readyState === 4) {
-                console.error("Error while loading /" + base_url + "/manifest.json");
-            }
-        }
 
-        xhr.send();
+        load_manifest(base_url, function(json) {
+            var inner = "<h2>" + json.title + "</h2>" + json.preview.join(" ") +
+                        "<p><a href=\"/" + base_url + "/" + json.file + "\">Read more...</a>" +
+                        "&#160;<a target='_blank' rel='noopener' href=\"/" + base_url + "/" + json.file +
+                        "\">Read more in new tab...</a></p>";
+            container.innerHTML = inner;
+            if (window.MathJax && MathJax.Hub)
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+        });
+
         idx++;
         if (idx < idx_table.length)
             window.setTimeout(append_link, 300);
