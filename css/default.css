@@ -8,11 +8,14 @@ html, body {
     vertical-align: middle;
     background-color: #101010;
     color: #ffffff;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
 #content, #content-list {
     padding: 70pt;
-    position: absolute;
 }
 
 @media print {
