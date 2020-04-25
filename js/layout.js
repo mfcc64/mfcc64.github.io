@@ -8,8 +8,8 @@ function default_layout() {
         var footer = document.createElement("div");
         footer.className = "align-center";
         footer.id = "footer-link";
-        footer.innerHTML = "<a href='/'><img src='/img/icon/icon-32.png' alt='Home'/></a>" +
-                            "<a href='https://github.com/mfcc64' rel='noopener' target='_blank'>" +
+        footer.innerHTML = "<a href='/' title='Home'><img src='/img/icon/icon-32.png' alt='Home'/></a>" +
+                            "<a href='https://github.com/mfcc64' title='GitHub' rel='noopener' target='_blank'>" +
                                 "<img src='/img/icon/github-mark-light-32.png' alt='GitHub'/>" +
                             "</a>";
 
@@ -35,9 +35,11 @@ function default_layout() {
             div.style.position = "fixed";
             div.style[dir] = 0;
             div.style.bottom = 0;
-            div.innerHTML = "<a href='/" + base + "/" + json.file + "'>" +
-                            "<img src='/img/icon/arrow-" + dir + "-32.png' alt='" + alt + "'/>" +
-                            "</a>";
+            var a = document.createElement("a");
+            a.innerHTML = "<img src='/img/icon/arrow-" + dir + "-32.png' alt='" + alt + "'/>";
+            a.href = "/" + base + "/" + json.file;
+            a.title = json.title;
+            div.appendChild(a);
             footer.appendChild(div);
         }
         load_manifest(prev_base, function(json) { append_arrow("left", prev_base, json); });
