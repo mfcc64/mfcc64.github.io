@@ -40,7 +40,7 @@ function default_layout() {
             a.href = "/" + base + "/" + json.file;
             a.title = json.title;
             div.appendChild(a);
-            footer.appendChild(div);
+            footer.insertBefore(div, alt == "Prev" ? footer.firstChild : null);
         }
         load_manifest(prev_base, function(json) { append_arrow("left", prev_base, json); });
         load_manifest(next_base, function(json) { append_arrow("right", next_base, json); });
