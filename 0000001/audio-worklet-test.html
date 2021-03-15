@@ -10,7 +10,10 @@
     <body>
         <div id="content">
             <h1>AudioWorklet Test</h1>
-            <p>Test AudioWorklet performance. <button onclick="run_test()">Start</button>
+            <p>Test AudioWorklet performance.
+            <label>Latency hint: <input type="text" id="latency-hint"/></label>
+            <button onclick="run_test()">Start</button><br/>
+            <span id="base-latency"></span><br/>
             <span id="test-level"></span></p>
         </div>
     </body>
