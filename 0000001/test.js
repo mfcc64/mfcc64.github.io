@@ -19,19 +19,11 @@ async function run_test() {
     var gen_wave = new AudioWorkletNode(ctx, "gen-wave",
                                         {numberOfInputs: 0, numberOfOutputs: 1, outputChannelCount: [2]});
     gen_wave.connect(ctx.destination);
-    gen_wave.port.onmessage = (v) => {
-        document.getElementById("test-level").textContent = v.data;
+    var start = performance.now();
+    function display_timer() {
+        document.getElementById("timer").textContent =
+            Math.floor((performance.now() - start) / 1000) + " s";
+        setTimeout(display_timer, 100);
     }
-
-    var test_level = 0;
-    var test_level_max = 10;
-    function increment_test_level() {
-        if (test_level < test_level_max) {
-            test_level++;
-            gen_wave.port.postMessage("increment");
-            setTimeout(increment_test_level, 10000);
-        }
-    }
-
-    setTimeout(increment_test_level, 100);
+    display_timer();
 }
