@@ -23,7 +23,7 @@ for (let k = 0; k < sampleRate; k++) {
 }
 
 var index = 0;
-var perf_increment = 5 / sampleRate;
+var perf_increment = 1 / sampleRate;
 var perf = 0;
 
 function dummy_func(x) {
@@ -35,7 +35,7 @@ class GenWave extends AudioWorkletProcessor {
         var output = outputs[0];
         var len = output[0].length;
         for (let x = 0; x < len; x++) {
-            output[0][x] = wave_table[index];
+            output[0][x] = wave_table[index] * Math.min(1.0, 0.1 * perf);
             index++;
             index = (index < sampleRate) ? index : index - sampleRate;
 
