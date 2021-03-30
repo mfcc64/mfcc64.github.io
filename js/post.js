@@ -1,5 +1,5 @@
 
 var post_info = {
-    count: 3,
+    count: 2,
     important: [ 0 ]
 };
