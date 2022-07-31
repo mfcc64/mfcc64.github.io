@@ -47,8 +47,8 @@
                         "&#160;<a target='_blank' rel='noopener' href=\"/" + base_url + "/" + json.file +
                         "\">Read more in new tab...</a></p>";
             container.innerHTML = inner;
-            if (window.MathJax && MathJax.Hub)
-                MathJax.Hub.Queue(["Typeset", MathJax.Hub, container]);
+            if (window.MathJax && MathJax.typeset)
+                MathJax.typeset([container]);
         });
 
         idx++;

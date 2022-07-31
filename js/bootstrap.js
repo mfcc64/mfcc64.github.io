@@ -20,13 +20,7 @@ function include_icon(url, size) {
     include_icon("/img/icon/icon-32.png", 32);
     include_icon("/img/icon/icon-48.png", 48);
     include_icon("/img/icon/icon-64.png", 64);
-
-    if (window.location && location.hostname == "localhost") {
-        include_js("/MathJax/MathJax.js?config=TeX-AMS_CHTML-full", true);
-    } else {
-        include_js("https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_CHTML-full", true);
-    }
-
+    include_js("https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js", true);
     include_js("/js/post.js", false);
     include_js("/js/load-manifest.js", false);
     include_js("/js/layout.js", false);
