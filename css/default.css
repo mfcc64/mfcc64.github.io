@@ -70,7 +70,7 @@ p {
 
 #footer-link {
     position: fixed;
-    z-index: 10000;
+    z-index: 1000000000;
     bottom: 0;
     left: 0;
     right: 0;
