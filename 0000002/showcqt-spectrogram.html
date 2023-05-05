@@ -6,20 +6,29 @@
         <link rel="stylesheet" href="/css/default.css"/>
         <script src="/js/bootstrap.js"></script>
         <script type="module">
-            import "./script.js";
-
+            const player = document.getElementById("audio-player");
             const audio_file = document.getElementById("audio-file");
             audio_file.onchange = function() {
                 if (!this.files[0])
                     return;
 
-                const player = document.getElementById("audio-player");
                 const old = player.src;
                 player.src = URL.createObjectURL(this.files[0]);
                 player.play();
                 URL.revokeObjectURL(old);
             };
             audio_file.onchange();
+
+            const sample_audio = document.getElementById("sample-audio");
+            sample_audio.onclick = function() {
+                const old = player.src;
+                player.src = "sample.mp3";
+                player.play();
+                URL.revokeObjectURL(old);
+            };
+        </script>
+        <script type="module">
+            import "./script.js";
 
             let microphone_promise = null;
             const cqt = document.getElementsByTagName("showcqt-element")[0];
@@ -54,6 +63,7 @@
             <p>
                 <audio id="audio-player" controls="" style="width: 100%;"></audio><br/>
                 <input type="file" id="audio-file" accept="audio/*, video/*"/>
+                <button id="sample-audio">Sample Audio</button>
                 <button id="microphone-button">Microphone</button><input type="checkbox" id="microphone-checkbox"/>
             </p>
             <p>This page is a webpage version of <a target="_blank" href="https://github.com/mfcc64/youtube-musical-spectrum">YouTube Musical Spectrum</a>.
