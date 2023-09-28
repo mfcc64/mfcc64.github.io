@@ -6,9 +6,9 @@
         <link rel="stylesheet" href="/css/default.css"/>
         <script src="/js/bootstrap.js"></script>
         <script type="module">
-            const player = document.getElementById("audio-player");
-            const audio_file = document.getElementById("audio-file");
-            audio_file.onchange = function() {
+            const player = document.getElementById("video-player");
+            const video_file = document.getElementById("video-file");
+            video_file.onchange = function() {
                 if (!this.files[0])
                     return;
 
@@ -17,7 +17,7 @@
                 player.play();
                 URL.revokeObjectURL(old);
             };
-            audio_file.onchange();
+            video_file.onchange();
 
             const sample_audio = document.getElementById("sample-audio");
             sample_audio.onclick = function() {
@@ -27,44 +27,14 @@
                 URL.revokeObjectURL(old);
             };
         </script>
-        <script type="module">
-            import "./script.js";
-
-            let microphone_promise = null;
-            const cqt = document.getElementsByTagName("showcqt-element")[0];
-            const microphone_gain = cqt.audio_context.createGain();
-            const microphone_checkbox = document.getElementById("microphone-checkbox");
-
-            microphone_checkbox.onchange = async function() {
-                if (!microphone_promise && this.checked) {
-                    microphone_promise = navigator.mediaDevices.getUserMedia({
-                        audio: {
-                            echoCancellation: false,
-                            autoGainControl: false,
-                            noiseSuppression: false,
-                            latency: 0,
-                            channelCount: 2,
-                            sampleRate: cqt.audio_context.sampleRate
-                        }
-                    });
-                    cqt.audio_context.createMediaStreamSource(await microphone_promise).connect(microphone_gain);
-                    microphone_gain.connect(cqt.audio_input);
-                }
-
-                microphone_gain.gain.value = this.checked;
-            };
-            microphone_checkbox.onchange();
-
-            document.getElementById("microphone-button").onclick = () => microphone_checkbox.click();
-        </script>
+        <script type="module" src="https://cdn.jsdelivr.net/gh/mfcc64/youtube-musical-spectrum@7.0.1/script.js"></script>
     </head>
     <body>
         <div id="content" style="padding-top: 0;">
             <p>
-                <audio id="audio-player" controls="" style="width: 100%;"></audio><br/>
-                <input type="file" id="audio-file" accept="audio/*, video/*"/>
+                <video id="video-player" controls="" width="640" height="360"></video><br/>
+                <input type="file" id="video-file" accept="audio/*, video/*"/>
                 <button id="sample-audio">Sample Audio</button>
-                <button id="microphone-button">Microphone</button><input type="checkbox" id="microphone-checkbox"/>
             </p>
             <p>This page is a webpage version of <a target="_blank" href="https://github.com/mfcc64/youtube-musical-spectrum">YouTube Musical Spectrum</a>.
             Click the top left icon to change settings.</p>
