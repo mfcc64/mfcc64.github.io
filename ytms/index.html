@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>YouTube Musical Spectrum</title>
+        <script type="module">
+            const base = "https://cdn.jsdelivr.net/npm/@mfcc64/ytms-stats@1.0.0/";
+            const github_url = "https://github.com/mfcc64/youtube-musical-spectrum";
+            const chrome_url = "https://chromewebstore.google.com/detail/youtube-musical-spectrum/ddpceafiohdlkiemibjgplcicblnfggi";
+            const firefox_url = "https://addons.mozilla.org/en-US/firefox/addon/youtube-musical-spectrum/";
+
+            let target = "github";
+            if (location.hash == "#chrome")
+                target = "chrome";
+            if (location.hash == "#firefox")
+                target = "firefox";
+
+            const hostname = document.referrer && new URL(document.referrer).hostname;
+            let ref = "unknown";
+            if (!hostname)
+                ref = "direct";
+            else if (hostname.indexOf(".google.") >= 0)
+                ref = "google";
+            else if (hostname.indexOf(".youtube.") >= 0)
+                ref = "youtube";
+            else if (hostname.indexOf(".bing.") >= 0)
+                ref = "bing";
+            else if (hostname.indexOf(".github.io") >= 0)
+                ref = "github-io";
+            else if (hostname.indexOf("github.com") >= 0)
+                ref = "github";
+
+            async function fetch_json(url) {
+                return (await fetch(url, {cache: "no-store"})).json();
+            }
+
+            await Promise.allSettled([
+                fetch_json(base + target + ".json"),
+                fetch_json(base + "ref/" + ref + ".json")
+            ]);
+
+            switch (target) {
+                case "chrome": location.href = chrome_url; break;
+                case "firefox": location.href = firefox_url; break;
+                default: location.href = github_url;
+            }
+        </script>
+    </head>
+    <body>
+        <div id="chrome"></div>
+        <div id="firefox"></div>
+    </body>
+</html>
