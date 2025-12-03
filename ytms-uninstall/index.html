@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8"/>
+        <title>YouTube Musical Spectrum</title>
+        <script type="module">
+            try {
+                let ts = document.location.hash.substring(3) * 1;
+                ts = (ts != ts) ? 0 : ts;
+                const dur = new Date() - ts;
+                let idx = Math.floor(Math.log2(dur / 86400000)) + 3;
+                idx = Math.max(0, Math.min(9, idx));
+                await fetch(`https://cdn.jsdelivr.net/npm/@mfcc64/ytms-uninstall/duration/${idx}.json`, {cache: "no-store"});
+            } catch (e) {
+                console.log(e);
+            }
+
+            document.location.href = "https://github.com/mfcc64/youtube-musical-spectrum/issues";
+        </script>
+    </head>
+    <body></body>
+</html>
