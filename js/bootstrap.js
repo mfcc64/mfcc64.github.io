@@ -20,14 +20,11 @@
             el.href = `/modules/img/icon/icon-${size}.png`;
         });
 
-    import(mprefix + "main.mjs");
-    append_el(document.head, "script", el => {
-        el.type = "module";
-        el.textContent = `
-            import main from "${mprefix + "main.mjs"}";
-            main(${JSON.stringify({post_info})});
-        `;
-        console.log(el.textContent);
+    import(mprefix + "main.mjs").then(async (r) => {
+        const main = r.default;
+        while (!document.body)
+            await new Promise(r => setTimeout(r, 30));
+        main({post_info});
     });
 
     append_el(document.head, "script", el => {
