@@ -1,27 +1,37 @@
+"use strict";
+(() => {
+    const post_info = {
+        count: 3,
+        important: [ 0 ]
+    };
 
-function append_element(parent, name, func) {
-    var e = document.createElement(name);
-    func(e);
-    parent.appendChild(e);
-}
+    const append_el = (parent, name, func) => {
+        const el = document.createElement(name);
+        func?.(el);
+        parent.appendChild(el);
+    };
 
-function include_js(url, is_async) {
-    append_element(document.head, "script", (e) => (e.async = is_async, e.src = url));
-}
+    const mprefix = "https://cdn.jsdelivr.net/npm/@mfcc64/gh-pages@1.0.0/";
+    for (const size of [16, 24, 32, 48, 64])
+        append_el(document.head, "link", el => {
+            el.rel = "icon";
+            el.type = "image/png";
+            el.sizes = size + "x" + size;
+            el.href = `/modules/img/icon/icon-${size}.png`;
+        });
 
-function include_icon(url, size) {
-    append_element(document.head, "link", (e) => (e.rel = "icon", e.type = "image/png",
-                   e.href = url, e.sizes = size + "x" + size));
-}
+    import(mprefix + "main.mjs");
+    append_el(document.head, "script", el => {
+        el.type = "module";
+        el.textContent = `
+            import main from "${mprefix + "main.mjs"}";
+            main(${JSON.stringify({post_info})});
+        `;
+        console.log(el.textContent);
+    });
 
-(function(){
-    include_icon("/img/icon/icon-16.png", 16);
-    include_icon("/img/icon/icon-24.png", 24);
-    include_icon("/img/icon/icon-32.png", 32);
-    include_icon("/img/icon/icon-48.png", 48);
-    include_icon("/img/icon/icon-64.png", 64);
-    include_js("https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-chtml.js", true);
-    include_js("/js/post.js", false);
-    include_js("/js/load-manifest.js", false);
-    include_js("/js/layout.js", false);
+    append_el(document.head, "script", el => {
+        el.src = "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml.js";
+        el.async = true;
+    });
 })();
