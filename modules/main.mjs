@@ -46,7 +46,7 @@ async function append_content_list(idx) {
     const div = document.createElement("div");
     div.innerHTML =
 `<h2>${manifest.title}</h2>
-${manifest.preview}
+${preview}
 <p>
     <a href="${url}" title="${manifest.title}">Read more...</a>
     <a href="${url}" title="${manifest.title}" rel="noopener" target="_blank">Read more in new tab...</a>
