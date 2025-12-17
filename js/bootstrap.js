@@ -20,11 +20,11 @@
             el.href = `/modules/img/icon/icon-${size}.png`;
         });
 
-    import(mprefix + "main.mjs").then(async (r) => {
-        const main = r.default;
-        while (!document.body)
-            await new Promise(r => setTimeout(r, 30));
-        main({post_info});
+    import(mprefix + "main.mjs").then(r => {
+        let main = r.default;
+        if (document.readyState != "loading")
+            main({post_info}), main = null;
+        document.addEventListener("readystatechange", () => (main?.({post_info}), main = null));
     });
 
     append_el(document.head, "script", el => {
