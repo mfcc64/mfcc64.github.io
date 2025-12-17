@@ -11,7 +11,7 @@
         parent.appendChild(el);
     };
 
-    const mprefix = "https://cdn.jsdelivr.net/npm/@mfcc64/gh-pages@1.0.0/";
+    const mprefix = "https://cdn.jsdelivr.net/npm/@mfcc64/gh-pages@1.0.1/";
     for (const size of [16, 24, 32, 48, 64])
         append_el(document.head, "link", el => {
             el.rel = "icon";
