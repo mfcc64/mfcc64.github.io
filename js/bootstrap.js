@@ -12,13 +12,6 @@
     };
 
     const mprefix = "https://cdn.jsdelivr.net/npm/@mfcc64/gh-pages@1.0.1/";
-    for (const size of [16, 24, 32, 48, 64])
-        append_el(document.head, "link", el => {
-            el.rel = "icon";
-            el.type = "image/png";
-            el.sizes = size + "x" + size;
-            el.href = `/modules/img/icon/icon-${size}.png`;
-        });
 
     import(mprefix + "main.mjs").then(r => {
         let main = r.default;
